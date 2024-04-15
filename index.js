@@ -19,18 +19,13 @@ const logger = require("./utils/log");
 //========= Create website for dashboard/uptime =========//
 ///////////////////////////////////////////////////////////
 
-const express = require('express');
-const path = require('path');
-
-const app = express();
-const port = process.env.PORT || 8080;
-
-// sendFile will go here
-app.get('/', function(req, res) {
-  res.sendFile(path.join(__dirname, 'index.html'));
+const dashboard = http.createServer(function (_req, res) {
+    res.writeHead(200, "OK", { "Content-Type": "text/plain" });
+    res.write("HI! IM BOT SUPER CUTEE UwU ><");
+    res.end();
 });
 
-app.listen(port);
+dashboard.listen(process.env.PORT);
 
 logger("Opened server site...", "[ Starting ]");
 
@@ -41,7 +36,7 @@ logger("Opened server site...", "[ Starting ]");
 function startBot(message) {
     (message) ? logger(message, "[ Starting ]") : "";
 
-    const child = spawn("node", ["--trace-warnings", "--async-stack-traces", "Priyansh.js"], {
+    const child = spawn("node", ["--trace-warnings", "--async-stack-traces", "mirai.js"], {
         cwd: __dirname,
         stdio: "inherit",
         shell: true
@@ -64,7 +59,7 @@ function startBot(message) {
 ////////////////////////////////////////////////
 
 
-axios.get("https://raw.githubusercontent.com/priyanshu192/bot/main/package.json").then((res) => {
+axios.get("https://raw.githubusercontent.com/d-jukie/miraiv2/main/package.json").then((res) => {
     logger(res['data']['name'], "[ NAME ]");
     logger("Version: " + res['data']['version'], "[ VERSION ]");
     logger(res['data']['description'], "[ DESCRIPTION ]");
@@ -90,4 +85,4 @@ startBot();
         startBot();
     } else logger('You are using the latest version!', '[ CHECK UPDATE ]'), startBot();
 }).catch(err => logger("Unable to check update.", "[ CHECK UPDATE ]"));*/
-// THIZ BOT WAS MADE BY ME(Priyansh Rajput)- DO NOT STEAL MY CODE 💖🔱🕉️💌
+// THIZ BOT WAS MADE BY ME(CATALIZCS) AND MY BROTHER SPERMLORD - DO NOT STEAL MY CODE (つ ͡ ° ͜ʖ ͡° )つ ✄ ╰⋃╯
